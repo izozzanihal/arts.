@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Weight Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6600ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #head {
+            background: rgb(204, 204, 204);
+            height: 10%;
+            width: 100%;
+        }
+
+        #body {
+            display: flex;
+            height: 90%;
+            width: 100%;
+        }
+
+        #left {
+            width: 70%;
+            height: 100%;
+            background: rgb(0, 0, 0);
+        }
+
+        #right {
+            width: 30%;
+            height: 100%;
+            background-color: #da7b7b;
+        }
+
+        #converter {
+            background-color: #da7b7b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 298px;
+            margin-left: 234px;
+            width: 65%;
+        }
+
+        /* Add more styles as needed */
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            color: #da7b7b;
+            background-color: #000000;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #fefffc;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="head"></div>
+    <div id="body">
+        <div id="left">
+
+            <div id="converter">
+                <h1>Weight Converter</h1>
+                <label for="fromPlanet">From:</label>
+                <select id="fromPlanet" class="button">
+
+                </select>
+
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" placeholder="Enter weight in kg" class="button">
+
+                <label for="toPlanet">To:</label>
+                <select id="toPlanet" class="button">
+
+                </select>
+
+                <button onclick="convertWeight()" class="button">Convert</button>
+
+                <p id="result"></p>
+            </div>
+        </div>
+        <div id="right">
+
+        </div>
+    </div>
+    <script>
+        function convertWeight() {
+            const fromPlanet = document.getElementById('fromPlanet').value;
+            const toPlanet = document.getElementById('toPlanet').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+
+            const gravitationalAccelerations = {
+                earth: 9.8,
+                mercury: 3.7,
+                venus: 8.87,
+                mars: 3.71,
+                jupiter: 24.79,
+                saturn: 10.44,
+                uranus: 8.69,
+                neptune: 11.15,
+                pluto: 0.62,
+                sun: 274,
+            };
+
+            const fromGravity = gravitationalAccelerations[fromPlanet];
+            const toGravity = gravitationalAccelerations[toPlanet];
+
+            if (!isNaN(weight)) {
+                const convertedWeight = weight * (toGravity / fromGravity);
+                document.getElementById('result').innerText = `Weight on ${toPlanet}: ${convertedWeight.toFixed(2)} kg`;
+            } else {
+                document.getElementById('result').innerText = 'Please enter a valid weight.';
+            }
+        }
+
+        // Populate planet options
+        const planetSelects = document.querySelectorAll('#fromPlanet, #toPlanet');
+        const planets = ['earth', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'sun'];
+
+        planets.forEach(planet => {
+            planetSelects.forEach(select => {
+                const option = document.createElement('option');
+                option.value = planet;
+                option.text = planet.charAt(0).toUpperCase() + planet.slice(1);
+                select.add(option);
+            });
+        });
+    </script>
+</body>
+
+</html>
