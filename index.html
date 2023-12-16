@@ -8,6 +8,16 @@
     <title>Weight Converter</title>
     <style>
         body {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+        body {
             font-family: Arial, sans-serif;
             background-color: #6600ff;
             margin: 0;
@@ -22,6 +32,11 @@
             height: 10%;
             width: 100%;
         }
+@media (max-width: 768px) {
+    #body {
+        flex-direction: column;
+    }
+}
 
         #body {
             display: flex;
@@ -40,6 +55,12 @@
             height: 100%;
             background-color: #da7b7b;
         }
+@media (max-width: 768px) {
+    #converter {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
 
         #converter {
             background-color: #da7b7b;
@@ -47,8 +68,8 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 298px;
-            margin-left: 234px;
-            width: 65%;
+        
+        
         }
 
         /* Add more styles as needed */
