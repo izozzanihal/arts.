@@ -1,172 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Weight Converter</title>
+    <title>Document</title>
     <style>
-        body {
-    font-size: 16px;
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-}
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #6600ff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+        * {
+            box-sizing: border-box;
         }
 
-        #head {
-            background: rgb(204, 204, 204);
-            height: 10%;
+        /* Style inputs */
+        input[type=text], input[type=number], select, textarea {
             width: 100%;
-        }
-@media (max-width: 768px) {
-    #body {
-        flex-direction: column;
-    }
-}
-
-        #body {
-            display: flex;
-            height: 90%;
-            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
         }
 
-        #left {
-            width: 70%;
-            height: 100%;
-            background: rgb(0, 0, 0);
-        }
-
-        #right {
-            width: 30%;
-            height: 100%;
-            background-color: #da7b7b;
-        }
-@media (max-width: 768px) {
-    #converter {
-        width: 90%;
-        margin-left: 5%;
-    }
-}
-
-        #converter {
-            background-color: #da7b7b;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 298px;
-        
-        
-        }
-
-        /* Add more styles as needed */
-        .button {
-            display: inline-block;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
             cursor: pointer;
-            border: 2px solid #ffffff;
-            color: #da7b7b;
-            background-color: #000000;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        .button:hover {
-            background-color: #fefffc;
-            color: #000000;
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        /* Style the container/contact section */
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        /* Create two columns that float next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            margin-top: 6px;
+            padding: 20px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .column, input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
         }
     </style>
 </head>
-
 <body>
-    <div id="head"></div>
-    <div id="body">
-        <div id="left">
-
-            <div id="converter">
-                <h1>Weight Converter</h1>
-                <label for="fromPlanet">From:</label>
-                <select id="fromPlanet" class="button">
-
-                </select>
-
-                <label for="weight">Weight:</label>
-                <input type="number" id="weight" placeholder="Enter weight in kg" class="button">
-
-                <label for="toPlanet">To:</label>
-                <select id="toPlanet" class="button">
-
-                </select>
-
-                <button onclick="convertWeight()" class="button">Convert</button>
-
-                <p id="result"></p>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <form id="submit-form" action="https://script.google.com/macros/s/AKfycbxe2i7fjFopmsFqQ9GQfSItjKDnx32slCAZ8v4KnVkeyAE8i4zSpAYG3vJ34srvcYAC/exec" method="post">
+                  <label for="reg-no">Reg No</label>
+                  <input type="text" id="reg-no" name="reg-no" placeholder="Reg No">  
+                  <label for="adno">Admission No</label>
+                  <input type="text" id="adno" name="adno" placeholder="Admission No">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your Name">
+                  <label for="Department">Department</label>
+                  <select id="Department" name="color">
+                      <option value="Automobile Engineering">Automobile Engineering</option>
+                      <option value="Architecture">Architecture</option>
+                      <option value="Civil engineering">Civil engineering</option>
+                      <option value="Computer Engineering">Computer Engineering</option>
+                      <option value="Electric and Electronic Engineering">Electric and Electronic Engineering</option>
+                      <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  </select>
+                  <label for="semester">Semester</label>
+                  <select name="semester" id="semester">
+                      <option value="Semester-2">Semester-2</option>
+                      <option value="Semester-4">Semester-4</option>
+                      <option value="Semester-6">Semester-6</option>
+                  </select>
+                  <label for="category1">Category 1</label>
+                  <select name="category1" id="category1">
+                    <option value="100">program 100</option>
+                      <option value="101">program 101</option>
+                      <option value="102">program 102</option>
+                      <option value="103">program 103</option>
+                      <option value="104">program 104</option>
+                      <option value="105">program 105</option>
+                      <option value="106">program 106</option>
+                      <option value="107">program 107</option>
+                      <option value="108">program 108</option>
+                      <option value="109">program 109</option>
+                      <option value="110">program 110</option>
+                      <option value="111">program 111</option>
+                      <option value="112">program 112</option>
+                      <option value="113">program 113</option>
+                      <option value="114">program 114</option>
+                      <option value="115">program 115</option>
+                      <option value="116">program 116</option>
+                      <option value="117">program 117</option>
+                      <option value="118">program 118</option>
+                      <option value="119">program 119</option>
+                      <option value="120">program 120</option>
+                      <option value="121">program 121</option>
+                      <option value="122">program 122</option>
+                      <option value="123">program 123</option>
+                      <option value="124">program 124</option>
+                      <option value="125">program 125</option>
+                      <option value="126">program 126</option>
+                      <option value="127">program 127</option>
+                      <option value="128">program 128</option>
+                      <option value="129">program 129</option>
+                      <option value="130">program 130</option>
+                      <option value="131">program 131</option>
+                      <option value="132">program 132</option>
+                      <option value="133">program 133</option>
+                      <option value="134">program 134</option>
+                      <option value="135">program 135</option>
+                      <option value="136">program 136</option>
+                      <option value="137">program 137</option>
+                      <option value="138">program 138</option>
+                      <option value="139">program 139</option>
+                      <option value="140">program 140</option>
+                      <option value="141">program 141</option>
+                      <option value="142">program 142</option>
+                      <option value="143">program 143</option>
+                      <option value="144">program 144</option>
+                      <option value="145">program 145</option>
+                      <option value="146">program 146</option>
+                      <option value="147">program 147</option>
+                      <option value="148">program 148</option>
+                      <option value="149">program 149</option>
+                  </select>
+                  <label for="category2">Category 2</label>
+                  <select name="category2" id="category2">
+                    <option value="100">program 100</option>
+                      <option value="101">program 101</option>
+                      <option value="102">program 102</option>
+                      <option value="103">program 103</option>
+                      <option value="104">program 104</option>
+                      <option value="105">program 105</option>
+                      <option value="106">program 106</option>
+                      <option value="107">program 107</option>
+                      <option value="108">program 108</option>
+                      <option value="109">program 109</option>
+                      <option value="110">program 110</option>
+                      <option value="111">program 111</option>
+                      <option value="112">program 112</option>
+                      <option value="113">program 113</option>
+                      <option value="114">program 114</option>
+                      <option value="115">program 115</option>
+                      <option value="116">program 116</option>
+                      <option value="117">program 117</option>
+                      <option value="118">program 118</option>
+                      <option value="119">program 119</option>
+                      <option value="120">program 120</option>
+                      <option value="121">program 121</option>
+                      <option value="122">program 122</option>
+                      <option value="123">program 123</option>
+                      <option value="124">program 124</option>
+                      <option value="125">program 125</option>
+                      <option value="126">program 126</option>
+                      <option value="127">program 127</option>
+                      <option value="128">program 128</option>
+                      <option value="129">program 129</option>
+                      <option value="130">program 130</option>
+                      <option value="131">program 131</option>
+                      <option value="132">program 132</option>
+                      <option value="133">program 133</option>
+                      <option value="134">program 134</option>
+                      <option value="135">program 135</option>
+                      <option value="136">program 136</option>
+                      <option value="137">program 137</option>
+                      <option value="138">program 138</option>
+                      <option value="139">program 139</option>
+                      <option value="140">program 140</option>
+                      <option value="141">program 141</option>
+                      <option value="142">program 142</option>
+                      <option value="143">program 143</option>
+                      <option value="144">program 144</option>
+                      <option value="145">program 145</option>
+                      <option value="146">program 146</option>
+                      <option value="147">program 147</option>
+                      <option value="148">program 148</option>
+                      <option value="149">program 149</option>
+                  </select>
+                  <label for="category3">Category 3</label>
+                  <select name="category3" id="category3">
+                    <option value="100">program 100</option>
+                      <option value="101">program 101</option>
+                      <option value="102">program 102</option>
+                      <option value="103">program 103</option>
+                      <option value="104">program 104</option>
+                      <option value="105">program 105</option>
+                      <option value="106">program 106</option>
+                      <option value="107">program 107</option>
+                      <option value="108">program 108</option>
+                      <option value="109">program 109</option>
+                      <option value="110">program 110</option>
+                      <option value="111">program 111</option>
+                      <option value="112">program 112</option>
+                      <option value="113">program 113</option>
+                      <option value="114">program 114</option>
+                      <option value="115">program 115</option>
+                      <option value="116">program 116</option>
+                      <option value="117">program 117</option>
+                      <option value="118">program 118</option>
+                      <option value="119">program 119</option>
+                      <option value="120">program 120</option>
+                      <option value="121">program 121</option>
+                      <option value="122">program 122</option>
+                      <option value="123">program 123</option>
+                      <option value="124">program 124</option>
+                      <option value="125">program 125</option>
+                      <option value="126">program 126</option>
+                      <option value="127">program 127</option>
+                      <option value="128">program 128</option>
+                      <option value="129">program 129</option>
+                      <option value="130">program 130</option>
+                      <option value="131">program 131</option>
+                      <option value="132">program 132</option>
+                      <option value="133">program 133</option>
+                      <option value="134">program 134</option>
+                      <option value="135">program 135</option>
+                      <option value="136">program 136</option>
+                      <option value="137">program 137</option>
+                      <option value="138">program 138</option>
+                      <option value="139">program 139</option>
+                      <option value="140">program 140</option>
+                      <option value="141">program 141</option>
+                      <option value="142">program 142</option>
+                      <option value="143">program 143</option>
+                      <option value="144">program 144</option>
+                      <option value="145">program 145</option>
+                      <option value="146">program 146</option>
+                      <option value="147">program 147</option>
+                      <option value="148">program 148</option>
+                      <option value="149">program 149</option>
+                  </select>
+                  <label for="category4">Category 4</label>
+                  <select name="category4" id="category4">
+                    <option value="100">program 100</option>
+                      <option value="101">program 101</option>
+                      <option value="102">program 102</option>
+                      <option value="103">program 103</option>
+                      <option value="104">program 104</option>
+                      <option value="105">program 105</option>
+                      <option value="106">program 106</option>
+                      <option value="107">program 107</option>
+                      <option value="108">program 108</option>
+                      <option value="109">program 109</option>
+                      <option value="110">program 110</option>
+                      <option value="111">program 111</option>
+                      <option value="112">program 112</option>
+                      <option value="113">program 113</option>
+                      <option value="114">program 114</option>
+                      <option value="115">program 115</option>
+                      <option value="116">program 116</option>
+                      <option value="117">program 117</option>
+                      <option value="118">program 118</option>
+                      <option value="119">program 119</option>
+                      <option value="120">program 120</option>
+                      <option value="121">program 121</option>
+                      <option value="122">program 122</option>
+                      <option value="123">program 123</option>
+                      <option value="124">program 124</option>
+                      <option value="125">program 125</option>
+                      <option value="126">program 126</option>
+                      <option value="127">program 127</option>
+                      <option value="128">program 128</option>
+                      <option value="129">program 129</option>
+                      <option value="130">program 130</option>
+                      <option value="131">program 131</option>
+                      <option value="132">program 132</option>
+                      <option value="133">program 133</option>
+                      <option value="134">program 134</option>
+                      <option value="135">program 135</option>
+                      <option value="136">program 136</option>
+                      <option value="137">program 137</option>
+                      <option value="138">program 138</option>
+                      <option value="139">program 139</option>
+                      <option value="140">program 140</option>
+                      <option value="141">program 141</option>
+                      <option value="142">program 142</option>
+                      <option value="143">program 143</option>
+                      <option value="144">program 144</option>
+                      <option value="145">program 145</option>
+                      <option value="146">program 146</option>
+                      <option value="147">program 147</option>
+                      <option value="148">program 148</option>
+                      <option value="149">program 149</option>
+                  </select>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
-        <div id="right">
-
-        </div>
     </div>
-    <script>
-        function convertWeight() {
-            const fromPlanet = document.getElementById('fromPlanet').value;
-            const toPlanet = document.getElementById('toPlanet').value;
-            const weight = parseFloat(document.getElementById('weight').value);
-
-            const gravitationalAccelerations = {
-                earth: 9.8,
-                mercury: 3.7,
-                venus: 8.87,
-                mars: 3.71,
-                jupiter: 24.79,
-                saturn: 10.44,
-                uranus: 8.69,
-                neptune: 11.15,
-                pluto: 0.62,
-                sun: 274,
-            };
-
-            const fromGravity = gravitationalAccelerations[fromPlanet];
-            const toGravity = gravitationalAccelerations[toPlanet];
-
-            if (!isNaN(weight)) {
-                const convertedWeight = weight * (toGravity / fromGravity);
-                document.getElementById('result').innerText = `Weight on ${toPlanet}: ${convertedWeight.toFixed(2)} kg`;
-            } else {
-                document.getElementById('result').innerText = 'Please enter a valid weight.';
-            }
-        }
-
-        // Populate planet options
-        const planetSelects = document.querySelectorAll('#fromPlanet, #toPlanet');
-        const planets = ['earth', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto', 'sun'];
-
-        planets.forEach(planet => {
-            planetSelects.forEach(select => {
-                const option = document.createElement('option');
-                option.value = planet;
-                option.text = planet.charAt(0).toUpperCase() + planet.slice(1);
-                select.add(option);
-            });
-        });
-    </script>
 </body>
-
 </html>
