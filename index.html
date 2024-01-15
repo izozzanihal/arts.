@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="icon" >
     <style>
         * {
             box-sizing: border-box;
@@ -13,7 +14,7 @@
         input[type=text], input[type=number], select, textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
+            border: 1px solid #ff0303;
             margin-top: 6px;
             margin-bottom: 16px;
             resize: vertical;
@@ -21,7 +22,7 @@
 
         input[type=submit] {
             background-color: #4CAF50;
-            color: white;
+            color: rgb(255, 255, 255);
             padding: 12px 20px;
             border: none;
             cursor: pointer;
@@ -34,7 +35,7 @@
         /* Style the container/contact section */
         .container {
             border-radius: 5px;
-            background-color: #f2f2f2;
+            background-color: #cf5821;
             padding: 10px;
         }
 
@@ -60,21 +61,45 @@
                 margin-top: 0;
             }
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .modal-content {
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="column">
-                <form id="submit-form" action="https://script.google.com/macros/s/AKfycbxe2i7fjFopmsFqQ9GQfSItjKDnx32slCAZ8v4KnVkeyAE8i4zSpAYG3vJ34srvcYAC/exec" method="post">
-                  <label for="reg-no">Reg No</label>
-                  <input type="text" id="reg-no" name="reg-no" placeholder="Reg No">  
-                  <label for="adno">Admission No</label>
-                  <input type="text" id="adno" name="adno" placeholder="Admission No">
-                  <label for="name">Name</label>
-                  <input type="text" id="name" name="name" placeholder="Your Name">
-                  <label for="Department">Department</label>
-                  <select id="Department" name="color">
+                <form id="submit-form" action="https://script.google.com/macros/s/AKfycbyCh9DpvnM6V8B-IGw772WfjDkatldyV01t2I4MgFC94Iu-46NWOoatQGPtJ6x1P_XW/exec" method="post" onsubmit="return validateForm()">
+                  
+                  <input type="number" id="reg-no" name="reg-no" placeholder="Enter Your 10 Bit Reg No...">  
+                  
+                  <input type="number" id="adno" name="adno" placeholder="Enter Your 4 Bit Admission No...">
+                  
+                  <input type="text" id="name" name="name" placeholder="Enter Your Full Name...">
+                
+                  <select id="Department" name="color" aria-placeholder="Department">
                       <option value="Automobile Engineering">Automobile Engineering</option>
                       <option value="Architecture">Architecture</option>
                       <option value="Civil engineering">Civil engineering</option>
@@ -82,15 +107,16 @@
                       <option value="Electric and Electronic Engineering">Electric and Electronic Engineering</option>
                       <option value="Mechanical Engineering">Mechanical Engineering</option>
                   </select>
-                  <label for="semester">Semester</label>
+                  
                   <select name="semester" id="semester">
                       <option value="Semester-2">Semester-2</option>
                       <option value="Semester-4">Semester-4</option>
                       <option value="Semester-6">Semester-6</option>
                   </select>
-                  <label for="category1">Category 1</label>
+                  
                   <select name="category1" id="category1">
-                    <option value="100">program 100</option>
+                      <option value="">SELECT CATEGORY-1</option>
+                      <option value="100">program 100</option>
                       <option value="101">program 101</option>
                       <option value="102">program 102</option>
                       <option value="103">program 103</option>
@@ -141,9 +167,10 @@
                       <option value="148">program 148</option>
                       <option value="149">program 149</option>
                   </select>
-                  <label for="category2">Category 2</label>
+                  
                   <select name="category2" id="category2">
-                    <option value="100">program 100</option>
+                      <option value="">SELECT CATEGORY-2</option>
+                      <option value="100">program 100</option>
                       <option value="101">program 101</option>
                       <option value="102">program 102</option>
                       <option value="103">program 103</option>
@@ -194,8 +221,9 @@
                       <option value="148">program 148</option>
                       <option value="149">program 149</option>
                   </select>
-                  <label for="category3">Category 3</label>
+                  
                   <select name="category3" id="category3">
+                    <option value="">SELECT CATEGORY-3</option>
                     <option value="100">program 100</option>
                       <option value="101">program 101</option>
                       <option value="102">program 102</option>
@@ -247,8 +275,9 @@
                       <option value="148">program 148</option>
                       <option value="149">program 149</option>
                   </select>
-                  <label for="category4">Category 4</label>
+                  
                   <select name="category4" id="category4">
+                    <option value="">SELECT CATEGORY-4</option>
                     <option value="100">program 100</option>
                       <option value="101">program 101</option>
                       <option value="102">program 102</option>
@@ -305,5 +334,53 @@
             </div>
         </div>
     </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var regNo = document.getElementById("reg-no").value;
+            var adNo = document.getElementById("adno").value;
+            var name = document.getElementById("name").value;
+
+            // Check if both regNo and adNo are filled
+            if (regNo.length !== 10) {
+                showModal("Please fill in Registration Number (10-bit)");
+                return false;
+            }
+            if (adNo.length !== 4) {
+                showModal("Please fill in Admission Number (4-bit)");
+                return false;
+            }
+            if (name.trim() === "") {
+                showModal("Please enter your name");
+                return false;
+            }
+
+            // Additional validation logic if needed
+
+            // Show success modal
+            showModal("Registration Successful!");
+
+            return true; // Submit the form if all conditions are met
+        }
+
+        function showModal(message) {
+            var modal = document.getElementById("myModal");
+            var modalMessage = document.getElementById("modalMessage");
+
+            modalMessage.innerHTML = message;
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
 </body>
 </html>
